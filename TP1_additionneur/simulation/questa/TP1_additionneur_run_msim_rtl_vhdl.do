@@ -5,13 +5,13 @@ if {[file exists rtl_work]} {
 vlib rtl_work
 vmap work rtl_work
 
-vcom -93 -work work {C:/Users/jroy/Documents/GitHub/TP_FPGA/TP1_additionneur/half_adder.vhd}
+vcom -93 -work work {C:/Users/jroy/Documents/GitHub/TP_FPGA/TP1_additionneur/full_adder.vhd}
 
-vcom -93 -work work {C:/Users/jroy/Documents/GitHub/TP_FPGA/TP1_additionneur/tb_half_adder.vhd}
+vcom -93 -work work {C:/Users/jroy/Documents/GitHub/TP_FPGA/TP1_additionneur/tb_full_adder.vhd}
 
-vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L cyclonev_hssi -L rtl_work -L work -voptargs="+acc"  tb_half_adder
+vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L cyclonev_hssi -L rtl_work -L work -voptargs="+acc"  tb_full_adder
 
 add wave *
 view structure
 view signals
-run 200 ns
+run 10 sec
