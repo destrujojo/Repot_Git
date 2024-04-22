@@ -1,7 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-use ieee.std_logic_arith.all;
+use ieee.std_logic_unsigned.all;
 
 -- DECLARATION D'UNE ENTITE
 entity tb_full_adder_4b is
@@ -9,7 +9,8 @@ end tb_full_adder_4b;
 
 architecture tb of tb_full_adder_4b is
     -- Déclaration des signaux de test
-	signal A, B : std_logic_vector(3 DOWNTO 0) := "0000";
+	signal A : std_logic_vector(3 DOWNTO 0) := "0000";
+	signal B : std_logic_vector(3 DOWNTO 0) := "0000";
 	signal S : std_logic_vector(3 DOWNTO 0);
 	signal Cin : std_logic := '0';
 	signal Cout : std_logic;
