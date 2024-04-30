@@ -17,12 +17,15 @@ begin
 	jk(0) <= k;
 	process(clk)
 	begin
-		case jk is
-			when "00" => qp <= qp;
-			when "01" => qp <= '0';
-			when "10" => qp <= '1';
-			when "11" => qp <= not(qp);
-		end case;
+		if (Clk'event and Clk ='1') then 
+			case jk is
+				when "00" => qp <= qp;
+				when "01" => qp <= '0';
+				when "10" => qp <= '1';
+				when "11" => qp <= not(qp);
+				when others => qp <= qp;
+			end case;
+		end if;
 	end process;
 	q <= qp;
 	qn <= not(qp);
