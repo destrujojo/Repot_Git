@@ -26,7 +26,7 @@ architecture behavioral of mef_serrure is
 	process(clk, rst)
 	begin
 		if rst = '1' then
-			current_state <= init;
+			current_state <= A;
 		elsif (clk'event and clk ='1') then
 			current_state <= future_state;
 		end if;
@@ -34,39 +34,39 @@ architecture behavioral of mef_serrure is
 
 	-- Description du calcul de l'état futur
 	-- Fonction COMBINATOIRE
-	process(input, current_state)
+	process(X, current_state)
 	begin
 		case current_state is
 			when A =>                                   -- when 1er état ...
-				if X = '1000' then future_state <= B; --   if entrée = valeur1 then future_state <= état suivant1
-				elsif X = '0000' then future_state <= A; --   if entrée = valeur2 then future_state <= état suivant2
+				if X = "1000" then future_state <= B; --   if entrée = valeur1 then future_state <= état suivant1
+				elsif X = "0000" then future_state <= A; --   if entrée = valeur2 then future_state <= état suivant2
 				else future_state <= F; --   etc.
 				end if;
 			when B =>                                   -- when 2ème état ...
-				if X = '1100' then future_state <= C; --   if entrée = valeur1 then future_state <= état suivant1
-				elsif X = '1000' then future_state <= B; --   if entrée = valeur2 then future_state <= état suivant2
+				if X = "1100" then future_state <= C; --   if entrée = valeur1 then future_state <= état suivant1
+				elsif X = "1000" then future_state <= B; --   if entrée = valeur2 then future_state <= état suivant2
 				else future_state <= G; --   etc.
 				end if;
             when C =>                                   -- when 1er état ...
-				if X = '1110' then future_state <= D; --   if entrée = valeur1 then future_state <= état suivant1
-				elsif X = '1100' then future_state <= C; --   if entrée = valeur2 then future_state <= état suivant2
+				if X = "1110" then future_state <= D; --   if entrée = valeur1 then future_state <= état suivant1
+				elsif X = "1100" then future_state <= C; --   if entrée = valeur2 then future_state <= état suivant2
 				else future_state <= G; --   etc.
 				end if;
 			when D =>                                   -- when 2ème état ...
-				if X = '1111' then future_state <= E; --   if entrée = valeur1 then future_state <= état suivant1
-				elsif X = '1110' then future_state <= D; --   if entrée = valeur2 then future_state <= état suivant2
+				if X = "1111" then future_state <= E; --   if entrée = valeur1 then future_state <= état suivant1
+				elsif X = "1110" then future_state <= D; --   if entrée = valeur2 then future_state <= état suivant2
 				else future_state <= H; --   etc.
 				end if;
 			when F =>                                   -- when 1er état ...
-				if X = '1000' then future_state <= F; --   if entrée = valeur1 then future_state <= état suivant1
+				if X = "1000" then future_state <= F; --   if entrée = valeur1 then future_state <= état suivant1
 				else future_state <= G; --   etc.
 				end if;
 			when G =>                                   -- when 2ème état ...
-				if X = '1100' then future_state <= G; --   if entrée = valeur1 then future_state <= état suivant1
+				if X = "1100" then future_state <= G; --   if entrée = valeur1 then future_state <= état suivant1
 				else future_state <= H; --   etc.
 				end if;
             when H =>                                   -- when 1er état ...
-				if X = '1110' then future_state <= H; --   if entrée = valeur1 then future_state <= état suivant1
+				if X = "1110" then future_state <= H; --   if entrée = valeur1 then future_state <= état suivant1
 				else future_state <= I; 
 				end if;
 			when others =>
@@ -80,34 +80,34 @@ architecture behavioral of mef_serrure is
 	begin
 		case current_state is
 			when A =>     -- when 1er état
-                Y <= '000'; --   assignation Sortie1 <= valeur1
+                Y <= "000"; --   assignation Sortie1 <= valeur1
                 O <= '0'; --   assignation Sortie2 <= valeur2
 			when B =>     -- when 2ème état
-                Y <= '001'; --   assignation Sortie1 <= valeur1
+                Y <= "001"; --   assignation Sortie1 <= valeur1
                 O <= '0'; --   assignation Sortie2 <= valeur2
 			when C =>     -- when 1er état
-                Y <= '010'; --   assignation Sortie1 <= valeur1
+                Y <= "010"; --   assignation Sortie1 <= valeur1
                 O <= '0'; --   assignation Sortie2 <= valeur2
 			when D =>     -- when 2ème état
-                Y <= '011'; --   assignation Sortie1 <= valeur1
+                Y <= "011"; --   assignation Sortie1 <= valeur1
                 O <= '0'; --   assignation Sortie2 <= valeur2
 			when E =>     -- when 1er état
-                Y <= '100'; --   assignation Sortie1 <= valeur1
+                Y <= "100"; --   assignation Sortie1 <= valeur1
                 O <= '1'; --   assignation Sortie2 <= valeur2
 			when F =>     -- when 2ème état
-                Y <= '001'; --   assignation Sortie1 <= valeur1
+                Y <= "001"; --   assignation Sortie1 <= valeur1
                 O <= '0'; --   assignation Sortie2 <= valeur2
 			when G =>     -- when 1er état
-                Y <= '010'; --   assignation Sortie1 <= valeur1
+                Y <= "010"; --   assignation Sortie1 <= valeur1
                 O <= '0'; --   assignation Sortie2 <= valeur2
 			when H =>     -- when 2ème état
-                Y <= '011'; --   assignation Sortie1 <= valeur1
+                Y <= "011"; --   assignation Sortie1 <= valeur1
                 O <= '0'; --   assignation Sortie2 <= valeur2
 			when I =>     -- when 1er état
-                Y <= '100'; --   assignation Sortie1 <= valeur1
+                Y <= "100"; --   assignation Sortie1 <= valeur1
                 O <= '0'; --   assignation Sortie2 <= valeur2
 			when others =>
-				Y <= '000'; --   assignation Sortie1 <= valeur1
+				Y <= "000"; --   assignation Sortie1 <= valeur1
                 O <= '0'; -- Cas de défaut (ex. sortie <= 'X')
 		end case;
 	end process;

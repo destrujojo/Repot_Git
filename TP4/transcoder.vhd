@@ -10,7 +10,7 @@ entity transcoder is
 		codein : in std_logic_vector(3 downto 0);
 		X : in std_logic_vector(3 downto 0);
 		-- SORTIES
-		codeout : out std_logic_vector(3 downto 0);
+		codeout : out std_logic_vector(3 downto 0)
 	);
 end entity;
 
@@ -20,7 +20,7 @@ begin
 	process(clk, rst)
 	begin
 		if rst = '1' then
-			codeout <= '0000';
+			codeout <= "0000";
 		elsif (clk'event and clk ='1') then
 			codeout <= codein or X;
 		end if;
